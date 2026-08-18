@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_tv_app/config/tv_theme.dart';
 
 class StatCard extends StatelessWidget {
   final String title;
