@@ -90,7 +90,7 @@ class TvPairingScreen extends StatelessWidget {
                     ]
                   ),
                   child: QrImageView(
-                    data: 'vitalhabit_tv_pairing_${tvProvider.pairingCode}',
+                    data: 'VITALHABIT:TV:${tvProvider.pairingCode}',
                     version: QrVersions.auto,
                     size: 350.0,
                     eyeStyle: const QrEyeStyle(
@@ -107,13 +107,6 @@ class TvPairingScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      // Botón oculto temporal para simular la vinculación sin celular (para testing/demo)
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.read<TvProvider>().simulatePairing(),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        child: const Icon(Icons.developer_mode, color: Colors.transparent),
       ),
     );
   }
