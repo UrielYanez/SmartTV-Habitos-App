@@ -49,19 +49,22 @@ class TvPairingScreen extends StatelessWidget {
                         color: TvTheme.surfaceElevated,
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.pin_outlined, color: TvTheme.primaryFocused, size: 32),
-                          const SizedBox(width: 16),
-                          Text(
-                            'Código manual: ${tvProvider.pairingCode}',
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 2.0,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.pin_outlined, color: TvTheme.primaryFocused, size: 32),
+                            const SizedBox(width: 16),
+                            Text(
+                              'Código manual: ${tvProvider.pairingCode}',
+                              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
