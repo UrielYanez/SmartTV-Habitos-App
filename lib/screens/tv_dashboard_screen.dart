@@ -45,38 +45,45 @@ class TvDashboardScreen extends StatelessWidget {
             // Panel Lateral Izquierdo (Resumen general)
             Expanded(
               flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '¡Buen trabajo!',
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Mantener tus hábitos constantes te acerca a tus metas.',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: TvTheme.textSecondary,
-                    ),
-                  ),
-                  const SizedBox(height: 48),
-                  ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: TvTheme.surfaceElevated,
-                      foregroundColor: TvTheme.textPrimary,
-                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        tvProvider.userName != null 
+                            ? '¡Buen trabajo, ${tvProvider.userName}!'
+                            : '¡Buen trabajo!',
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ),
-                    icon: const Icon(Icons.logout, size: 28),
-                    label: const Text('Desvincular Pantalla', style: TextStyle(fontSize: 20)),
-                    onPressed: () {
-                      context.read<TvProvider>().simulateUnpairing();
-                    },
-                  ),
-                ],
+                    const SizedBox(height: 16),
+                    Text(
+                      'Mantener tus hábitos constantes te acerca a tus metas.',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: TvTheme.textSecondary,
+                      ),
+                    ),
+                    const SizedBox(height: 48),
+                    ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: TvTheme.surfaceElevated,
+                        foregroundColor: TvTheme.textPrimary,
+                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      icon: const Icon(Icons.logout, size: 28),
+                      label: const Text('Desvincular Pantalla', style: TextStyle(fontSize: 20)),
+                      onPressed: () {
+                        context.read<TvProvider>().unpair();
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(width: 48),
